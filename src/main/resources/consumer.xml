@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-    xsi:schemaLocation="
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
             http://www.springframework.org/schema/context
@@ -9,14 +9,20 @@
 			http://code.alibabatech.com/schema/dubbo
         	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+	<!-- <import resource="dd.xml" /> -->
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="consumer-of-helloworld-app" />
 
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application name="consumer-of-helloworld-app"  />
- 
-   <dubbo:registry address="multicast://224.5.6.7:1234?unicast=false" />
-    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" interface="com.mt.dubbo.demo.service.DemoService" check="false">
-    <dubbo:method name="sayHello" async="true"></dubbo:method>
-    </dubbo:reference>
-    
+	<!-- <dubbo:registry address="multicast://224.5.6.7:1234?unicast=false" /> -->
+	<dubbo:registry address="s1.af88.com.cn:2181,s2.af88.com.cn:2181,s3.af88.com.cn:2181" protocol="zookeeper"  version="0.0.1"/>
+		<!--<dubbo:registry address="120.25.204.152:2181" protocol="zookeeper"  version="0.0.1"/>-->
+	<dubbo:reference id="demoService" interface="com.mt.dubbo.demo.service.DemoService" check="false">
+		<dubbo:method name="sayHello" async="true"></dubbo:method>
+	</dubbo:reference>
+ 	<dubbo:reference version="rebuild-dev" id="sysMsgEventFacade" interface="com.neo.xnol.message.facade.SysMsgEventFacade" check="false" />
+	<dubbo:reference version="rebuild-dev" id="smsFacade" interface="com.neo.xnol.message.facade.SmsFacade" check="false"/>
+		<dubbo:reference version="rebuild-dev" id="sitemailFacade" interface="com.neo.xnol.message.facade.SitemailFacade" check="false"/> 
+	<!-- 		<dubbo:reference version="rebuild-dev" id="localCacheFacade" interface="com.neo.xnol.message.facade.LocalCacheFacade" check="false"/> --> 
+<!-- 		<dubbo:reference version="2.0.103" id="userPersonQueryFacade" interface="com.neo.xnol.uaccount.facade.UserPersonQueryFacade" />
+	 -->
 </beans>

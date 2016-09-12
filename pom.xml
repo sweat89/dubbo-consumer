@@ -45,6 +45,74 @@
 
 
 	<dependencies>
+	
+	<dependency>
+  <groupId>com.neo.xnol.management</groupId>
+  <artifactId>management-message</artifactId>
+  <version>1.2.0-t20</version>
+  <classifier>test</classifier>
+  <type>war</type>
+</dependency>
+	
+	
+	 <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.10</artifactId>
+            <version>0.8.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jmxtools</artifactId>
+                    <groupId>com.sun.jdmk</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jmxri</artifactId>
+                    <groupId>com.sun.jmx</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jms</artifactId>
+                    <groupId>javax.jms</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpasyncclient</artifactId>
+    <version>4.1.2</version>
+</dependency>
+	
+	<dependency>
+			<groupId>com.neo</groupId>
+			<artifactId>xnol-config-center</artifactId>
+			<version>2.13.1-SNAPSHOT</version>
+		</dependency>
+		
+				<dependency>
+			<groupId>com.neo</groupId>
+			<artifactId>xnol-uaccount-interface</artifactId>
+			<version>2.37.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.neo</groupId>
+			<artifactId>xnol-config-center</artifactId>
+			<version>2.12.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- 引入elastic-job核心模块 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-core</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+
+		<!-- 使用springframework自定义命名空间时引入 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-spring</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.mt</groupId>
@@ -64,18 +132,24 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>com.neo</groupId>
+			<artifactId>xnol-message-interface</artifactId>
+			<version>2.12.0-SNAPSHOT</version>
+		</dependency>
+
 		<!-- dubbo dependency -->
-	<dependency>
-		<groupId>com.alibaba</groupId>
-		<artifactId>dubbo</artifactId>
-		<version>2.5.3</version>
-		<exclusions>
-			<exclusion>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring</artifactId>
-			</exclusion>
-		</exclusions>
-	</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
